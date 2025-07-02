@@ -1,127 +1,159 @@
-# SmartDash
+# Smart Dash – HTML + SVG + Django
 
-A dynamic and interactive dashboard application designed to monitor and visualize real-time data including temperature, humidity, voltage, and current. Built with HTML, CSS, JavaScript, and Django, this project features customizable cards, line charts for trends, and dynamic pie charts for data distribution.
+Smart Dash is a Django-based web application that includes a real-time dashboard, an email contact form, and a personal portfolio page with a downloadable CV option. Built using HTML, CSS, JavaScript (Chart.js), and Django, this project demonstrates both backend logic and frontend interactivity in one integrated web app.
 
-## Features
-- **Real-Time Data Visualization**: Line charts (`myChart1` for Temperature/Humidity, `myChart2` for Voltage/Current) to track trends over time.
-- **Dynamic Pie Chart**: Displays the proportional distribution of the latest card values (e.g., temperature, humidity, voltage, current).
-- **Customizable Cards**: Editable labels and values with local storage synchronization for persistence.
-- **Responsive Design**: Fully functional across desktops, tablets, and mobile devices.
-- **API Integration**: Fetches and updates data via RESTful endpoints.
-- **Data Sampling**: Limits chart data points (max 50) for optimal performance and readability.
+---
 
-## Prerequisites
-- **Python 3.x**
-- **Django** (with `djangorestframework` for API)
-- **Node.js** (optional, for frontend dependencies if expanded)
-- **Git** (for version control)
+## 🔧 Features
 
-## Installation
+### 📊 Dashboard (`/`)
+- Displays real-time data: **Temperature**, **Humidity**, **Voltage**, and **Current**
+- Interactive **line charts** and **pie charts** using Chart.js
+- SVG logo used in the navbar for design consistency
 
-### 1. Clone the Repository
-Clone the project to your local machine:
+### 📩 Contact Us (`/sendmail/`)
+- Email form with:
+  - Recipient email input
+  - Message field
+  - Image file upload (JPG, PNG, JPEG) with preview
+- Emails sent through **Gmail SMTP**
 
-```bash
-git clone https://github.com/Shreshtha03/SmartDash.git
-cd SmartDash
+### 👤 About Me (`/aboutme/`)
+- This is **your personal portfolio page**
+- Showcases your projects (e.g., Mental Health Platform, Shopify Clone)
+- Includes a **"Download Resume/CV"** button at the bottom of the page
+
+---
+
+## 🗂️ Project Structure
+
+```
+Smart-dash-html-SVG-Django/
+├── dashboard/
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── views.py
+│   └── wsgi.py
+├── myapp/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations/
+│   ├── models.py
+│   ├── serializers.py
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── sendmail/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations/
+│   ├── models.py
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── static/
+│   ├── images/
+│   ├── aboutme.css
+│   ├── chart1.js
+│   ├── chart2.js
+│   ├── contact.css
+│   ├── contact.js
+│   ├── edit.css
+│   ├── edit.js
+│   ├── piechart.js
+│   └── style.css
+├── templates/
+│   ├── aboutme.html
+│   ├── contact.html
+│   ├── edit.html
+│   ├── index.html
+│   └── svg.html
+├── db.sqlite3
+├── manage.py
+└── README.md
 ```
 
-### 2. Set Up Backend (Django)
-Create and activate a virtual environment:
+---
 
+## ⚙️ Installation
+
+### ✅ Prerequisites
+- Python 3.8+
+- Django 4.2+
+- Git
+- Gmail account with **App Password** enabled
+
+### 🚀 Setup Instructions
+
+1. **Clone the Repository**
+```bash
+git clone https://github.com/Shreshtha03/Smart-dash-html-SVG-Django.git
+cd Smart-dash-html-SVG-Django
+```
+
+2. **Create a Virtual Environment**
 ```bash
 python -m venv venv
+# Activate:
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-Install required Python packages:
-
+3. **Install Dependencies**
 ```bash
-pip install django djangorestframework
+pip install django
 ```
 
-Set up the database (if using models):
+4. **Configure Email Settings**
+Edit `dashboard/settings.py`:
+```python
+EMAIL_HOST_USER = 'your_email@gmail.com'
+EMAIL_HOST_PASSWORD = 'your_app_password'
+```
 
+5. **Run Migrations**
 ```bash
+python manage.py makemigrations
 python manage.py migrate
 ```
 
-Start the Django development server:
-
+6. **Start the Server**
 ```bash
 python manage.py runserver
 ```
 
-### 3. Set Up Frontend
-Ensure all static files are in the `static` folder:
-- `css/style.css` for styling
-- `js/first.js` for JavaScript logic
+Then open:  
+📍 `http://localhost:8000/`
 
-No additional Node.js setup is required unless you add more libraries.
+---
 
-### 4. Run the Application
-Open your browser and navigate to `http://127.0.0.1:8000/` to access the dashboard.
+## 🌐 Usage Guide
 
-## Usage
-- **Cards**: Click the "Edit" button on any card to modify its equipment and value. Changes are saved in the browser's local storage.
-- **Charts**:
-  - **Line Charts**: `myChart1` shows Temperature (°C) and Humidity (%), while `myChart2` displays Voltage (V) and Current (A).
-  - **Pie Chart**: Visualizes the latest values of all cards as a percentage distribution.
-- **API Endpoints**:
-  - `/api/Temperature/`: Fetches temperature data.
-  - `/api/Humidity/`: Fetches humidity data.
-  - `/api/Voltage/`: Fetches voltage data.
-  - `/api/Current/`: Fetches current data.
-  - `/api/Card/`: Manages card configurations and values.
+| Page         | URL             | Description                                       |
+|--------------|------------------|---------------------------------------------------|
+| Home         | `/`              | Dashboard with charts and real-time data         |
+| Contact Us   | `/sendmail/`     | Email form with message + image upload           |
+| Portfolio    | `/aboutme/`      | Your portfolio with **Resume Download** button   |
 
-## Project Structure
-```
-SmartDash/
-├── dashboard/
-│   ├── static/
-│   │   ├── css/
-│   │   │   └── style.css    # CSS for dashboard styling
-│   │   └── js/
-│   │       └── first.js     # JavaScript for charts and card logic
-│   ├── templates/
-│   │   └── index.html       # Main HTML template
-│   └── views.py            # Django views for API and pages
-├── manage.py                # Django management script
-└── README.md                # This file
-```
+---
 
-## Contributing
-1. Fork the repository.
-2. Create a new branch for your feature:
-   ```bash
-   git checkout -b feature-branch
-   ```
-3. Make your changes and commit:
-   ```bash
-   git commit -m "Add new feature or fix"
-   ```
-4. Push to the branch:
-   ```bash
-   git push origin feature-branch
-   ```
-5. Open a Pull Request with a clear description of your changes.
+## 🧰 Tech Stack
 
-## License
-This project is licensed under the MIT License. See the `LICENSE.md` file for details.
+| Layer     | Tools / Libraries                    |
+|-----------|--------------------------------------|
+| Backend   | Django 4.2, Python 3.x               |
+| Frontend  | HTML, CSS, JavaScript, Chart.js      |
+| Charts    | Chart.js                             |
+| Email     | Gmail SMTP with App Password         |
+| Static    | Django static files                  |
+| Version Control | Git + GitHub                   |
 
-## Acknowledgements
-- **Chart.js**: Powers the line and pie chart visualizations.
-- **Django Community**: Provides the robust backend framework.
-- **Ayush**: The developer behind this innovative dashboard!
+---
 
-## Screenshots
-To be added once the dashboard is fully styled.
-- **Dashboard Overview**: <img src="screentshot/dashboard.png" alt="Dashboard Overview">
-- **Django admin**: <img src="screentshot/admin.png" alt="admin panel">
+## 🙋 Contact
 
-*Note*: Create a `screenshots/` folder, upload images, and update the paths above.
-
-## Troubleshooting
-- **API Not Loading**: Ensure the Django server is running and API endpoints are correctly defined in `views.py`.
-- **Charts Not Displaying**: Check the browser console (F12) for errors and ensure `first.js` is loaded in `index.html`.
-- **Card Updates Failing**: Verify `localStorage` is accessible and `/api/Card/` returns valid JSON.
+- Use the **Contact Us** form at `/sendmail/`
+- Or open an issue on this GitHub repository

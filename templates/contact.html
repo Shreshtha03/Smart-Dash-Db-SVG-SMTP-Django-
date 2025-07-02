@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="{% static 'contact.css' %}">
+</head>
+<body>
+    <form id="mailform" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Send Mail</h2>
+        <div class="form-group">
+            <label for="to">To:</label>
+            <input type="email" id="to" name="to" value="" requiredS>
+        </div>
+        <div class="form-group">
+            <label for="body">Body:</label>
+            <textarea id="body" name="body" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="attachment">Choose Image (PNG, JPG, JPEG):</label>
+            <div class="file-upload-wrapper">
+                <input type="file" id="attachment" name="attachment" accept="image/png,image/jpeg,image/jpg">
+                <div class="file-upload-button">Choose File</div>
+                <div class="file-name" id="file-name">No file chosen</div>
+            </div>
+            <img id="image-preview" alt="Image Preview">
+        </div>
+        <div class="Send">
+            <button type="submit" id="send">Send</button>
+        </div>
+    </form>
+    <div id="status"></div>
+    <script src="{% static 'contact.js' %}"></script>
+</body>
+</html>

@@ -21,8 +21,10 @@ from .import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.svg, name='svg'),
+    path('contact/', views.contact, name='contact'),
     path('aboutme/', views.aboutme, name='aboutme'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('dashboard/edit/', views.edit, name='edit'),
     path('api/', include('myapp.urls')),
+    path('sendmail/', include('sendmail.urls')),
 ]

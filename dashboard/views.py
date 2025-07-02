@@ -12,3 +12,6 @@ def svg(request):
 
 def aboutme(request):
     return render(request, 'aboutme.html')
+
+def contact(request):
+    return render(request, 'contact.html')

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',  
     'corsheaders',
     'import_export',
+    'sendmail',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,10 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:8000',
     'http://127.0.0.1:8000',
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'abcd@example.com' # replace with your email 
+EMAIL_HOST_PASSWORD = 'your_email_password' # replace with your email password
