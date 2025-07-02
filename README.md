@@ -1,4 +1,4 @@
-# Smart Dash – HTML + SVG + Django
+# Smart Dash – Db + SVG + SMTP + Django 
 
 Smart Dash is a Django-based web application that includes a real-time dashboard, an email contact form, and a personal portfolio page with a downloadable CV option. Built using HTML, CSS, JavaScript (Chart.js), and Django, this project demonstrates both backend logic and frontend interactivity in one integrated web app.
 
