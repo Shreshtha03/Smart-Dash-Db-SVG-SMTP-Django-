@@ -1,0 +1,34 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django specific
+*.log
+local_settings.py
+db.sqlite3
+media/
+staticfiles/
+
+# Ignore all migrations except __init__.py
+**/migrations/*.py[cod]
+!**/migrations/__init__.py
+
+# VS Code settings
+.vscode/
+
+# Environment variables
+.env
+*.env
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Python virtual environment
+venv/
+env/
