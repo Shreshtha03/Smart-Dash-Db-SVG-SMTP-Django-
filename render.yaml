@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: smart-dashboard
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn dashboard.wsgi"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: dashboard.settings
+      - key: SECRET_KEY
+        value: your_secret_key_here
+      - key: DEBUG
+        value: False
+      - key: ALLOWED_HOSTS
+        value: smart-dashboard.onrender.com
